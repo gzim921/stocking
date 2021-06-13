@@ -5,8 +5,9 @@ class HomeController < ApplicationController
       @nothing = 'Hey! You Forgot To Enter A Symbol'
     elsif params[:ticker]
       @stock = StockQuote::Stock.quote(params[:ticker])
-    elsif !@stock
+      if !@stock
       @error = "Hey! That Stock Symbol Doesn't Exist. Please Try Again."
+      end
     end
   end
 
