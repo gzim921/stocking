@@ -6,10 +6,10 @@
   The ticker: <%= @stock.ticker %><br/> does not exist!
 <% else %>
   <tr>
-    <strong><%= @ticker.company_name %></strong><br/>
+    <strong><%= @ticker.sector %></strong><br/>
     Ticker Symbol: <%= @ticker.symbol %><br/>
     Current Price: $<%= number_with_precision(@ticker.latest_price, :precision => 2, :delimiter => ',') %><br/>
-    Market Cap: $<%= number_with_precision(@ticker.market_cap, :precision => 2, :delimiter => ',') %><br/>
+    Market Cap: $<%= number_with_precision(@ticker.high, :precision => 2, :delimiter => ',') %><br/>
     Primary Exchange: <%= number_with_precision(@ticker.primary_exchange) %><br/>
   </tr>
 <% end %>

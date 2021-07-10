@@ -5,9 +5,9 @@
   <thead class="table-dark">
     <tr>
       <th>Company</th>
+      <th>Article</th>
       <th>Ticker</th>
       <th>Current Price</th>
-      <th>Market Cap</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -25,10 +25,14 @@
             <td class="text-center"><%= link_to 'Delete', stock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% else %>
           <tr>
-            <td><%= link_to @ticker.company_name, stock %></td>
+            <td><%= link_to @ticker.sector, stock %></td>
+            <% if HTTP.get("https://www.coindesk.com/price/#{@ticker.symbol}") %>
+              <td><button type="button" class="btn btn-success">Positive</button></td>
+            <% elsif HTTP.get("https://www.coindesk.com/price/#{@ticker.symbol}") %>
+              <button type="button" class="btn btn-success">Negative</button>
+            <% end %>
             <td><%= @ticker.symbol %></td>
-            <td>$<%= number_with_precision(@ticker.latest_price, :precision => 2, :delimiter => ',') %></td>
-            <td>$<%= number_with_precision(@ticker.market_cap, :precision => 2, :delimiter => ',') %></td>
+            <td>$<%= number_with_precision(@ticker.latest_price, :precision => 15, :delimiter => ',') %></td>
             <td class="text-center"><%= link_to 'Edit', edit_stock_path(stock) %></td>
             <td class="text-center"><%= link_to 'Delete', stock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>

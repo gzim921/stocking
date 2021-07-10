@@ -1,8 +1,7 @@
-<h1>Stocking</h1>
-
+<h1>Crypto Article Reader</h1>
 <%= form_tag root_path, :method => 'POST' do %>
-  <%= text_field_tag 'ticker', nil, placeholder: 'Enter Ticker Symbol', size: 50 %>
-  <%= submit_tag 'Lookup' %>
+  <%= text_field_tag 'ticker', nil, placeholder: 'Input Article Link', size: 50 %>
+  <%= submit_tag 'Analyze' %>
 <% end %>
 
 <% if @stock %>

@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  require "http"
   def index
     StockQuote::Stock.new(api_key: 'pk_cd277a5a98b1430c9bd2ee3a586c6eb2')
     if params[:ticker] == ''
